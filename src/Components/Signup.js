@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Navbar from './Navbar'
 import {Link, useNavigate} from 'react-router-dom'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
-import {auth, firestore} from '../FirebaseConfig/firebaseConfigs'
+import {auth, db} from '../FirebaseConfig/firebaseConfigs'
 import { collection, addDoc } from 'firebase/firestore'
 import "./Signup.css"
 
@@ -28,7 +28,7 @@ const Signup = () => {
    .then((usercredentials) => {
         const user = usercredentials.user;
         const initialCartValue = 0;
-        addDoc(collection(firestore, "üsers"),{
+        addDoc(collection(db, "users"),{
            username : username,
            password : password,
            address : address,
